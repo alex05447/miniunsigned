@@ -88,12 +88,19 @@ impl Unsigned for usize {
 /// `NonZeroU8`, `NonZeroU16`, `NonZeroU32`, `NonZeroU64`, `NonZeroUsize`.
 pub trait NonZero<U: Unsigned>: Copy {
     fn new(val: U) -> Option<Self>;
+
+    unsafe fn new_unchecked(val: U) -> Self;
+
     fn get(self) -> U;
 }
 
 impl NonZero<u8> for NonZeroU8 {
     fn new(val: u8) -> Option<Self> {
         Self::new(val)
+    }
+
+    unsafe fn new_unchecked(val: u8) -> Self {
+        Self::new_unchecked(val)
     }
 
     fn get(self) -> u8 {
@@ -106,6 +113,10 @@ impl NonZero<u16> for NonZeroU16 {
         Self::new(val)
     }
 
+    unsafe fn new_unchecked(val: u16) -> Self {
+        Self::new_unchecked(val)
+    }
+
     fn get(self) -> u16 {
         self.get()
     }
@@ -114,6 +125,10 @@ impl NonZero<u16> for NonZeroU16 {
 impl NonZero<u32> for NonZeroU32 {
     fn new(val: u32) -> Option<Self> {
         Self::new(val)
+    }
+
+    unsafe fn new_unchecked(val: u32) -> Self {
+        Self::new_unchecked(val)
     }
 
     fn get(self) -> u32 {
@@ -126,6 +141,10 @@ impl NonZero<u64> for NonZeroU64 {
         Self::new(val)
     }
 
+    unsafe fn new_unchecked(val: u64) -> Self {
+        Self::new_unchecked(val)
+    }
+
     fn get(self) -> u64 {
         self.get()
     }
@@ -134,6 +153,10 @@ impl NonZero<u64> for NonZeroU64 {
 impl NonZero<usize> for NonZeroUsize {
     fn new(val: usize) -> Option<Self> {
         Self::new(val)
+    }
+
+    unsafe fn new_unchecked(val: usize) -> Self {
+        Self::new_unchecked(val)
     }
 
     fn get(self) -> usize {
