@@ -19,6 +19,8 @@ pub trait Unsigned:
     + FromPrimitive
     + ToPrimitive
 {
+    const BITS: u32;
+
     /// [`FromPrimitive::from_u8`] succeeds for all supported types.
     fn from_u8(byte: u8) -> Self;
 
@@ -29,6 +31,8 @@ pub trait Unsigned:
 }
 
 impl Unsigned for u8 {
+    const BITS: u32 = Self::BITS;
+
     fn from_u8(byte: u8) -> Self {
         byte as _
     }
@@ -39,6 +43,8 @@ impl Unsigned for u8 {
 }
 
 impl Unsigned for u16 {
+    const BITS: u32 = Self::BITS;
+
     fn from_u8(byte: u8) -> Self {
         byte as _
     }
@@ -49,6 +55,8 @@ impl Unsigned for u16 {
 }
 
 impl Unsigned for u32 {
+    const BITS: u32 = Self::BITS;
+
     fn from_u8(byte: u8) -> Self {
         byte as _
     }
@@ -62,6 +70,8 @@ impl Unsigned for u32 {
 }
 
 impl Unsigned for u64 {
+    const BITS: u32 = Self::BITS;
+
     fn from_u8(byte: u8) -> Self {
         byte as _
     }
@@ -75,6 +85,8 @@ impl Unsigned for u64 {
 }
 
 impl Unsigned for usize {
+    const BITS: u32 = Self::BITS;
+
     fn from_u8(byte: u8) -> Self {
         byte as _
     }
