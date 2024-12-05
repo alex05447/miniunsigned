@@ -1,8 +1,10 @@
 use {
     core::ops::{AddAssign, DivAssign, MulAssign, Rem, RemAssign, SubAssign},
-    num_traits::{FromPrimitive, PrimInt, ToPrimitive, WrappingAdd, WrappingMul, WrappingSub},
     std::num::{NonZeroU16, NonZeroU32, NonZeroU64, NonZeroU8, NonZeroUsize},
 };
+
+// Re-exporting for convenience.
+pub use num_traits::{FromPrimitive, PrimInt, ToPrimitive, WrappingAdd, WrappingMul, WrappingSub};
 
 /// An unsigned integer.
 /// `u8`, `u16`, `u32`, `u64`, `usize`.
