@@ -1,5 +1,5 @@
 use {
-    core::ops::{AddAssign, DivAssign, MulAssign, SubAssign},
+    core::ops::{AddAssign, DivAssign, MulAssign, Rem, RemAssign, SubAssign},
     num_traits::{FromPrimitive, PrimInt, ToPrimitive, WrappingAdd, WrappingMul, WrappingSub},
     std::num::{NonZeroU16, NonZeroU32, NonZeroU64, NonZeroU8, NonZeroUsize},
 };
@@ -16,6 +16,8 @@ pub trait Unsigned:
     + WrappingAdd
     + WrappingSub
     + WrappingMul
+    + Rem
+    + RemAssign
     + FromPrimitive
     + ToPrimitive
 {
