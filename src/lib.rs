@@ -100,80 +100,92 @@ impl Unsigned for usize {
 
 /// A non-zero unsigned integer.
 /// `NonZeroU8`, `NonZeroU16`, `NonZeroU32`, `NonZeroU64`, `NonZeroUsize`.
-pub trait NonZero<U: Unsigned>: Copy {
-    fn new(val: U) -> Option<Self>;
+pub trait NonZero: Copy {
+    type U: Unsigned;
 
-    unsafe fn new_unchecked(val: U) -> Self;
+    fn new(val: Self::U) -> Option<Self>;
 
-    fn get(self) -> U;
+    unsafe fn new_unchecked(val: Self::U) -> Self;
+
+    fn get(self) -> Self::U;
 }
 
-impl NonZero<u8> for NonZeroU8 {
-    fn new(val: u8) -> Option<Self> {
+impl NonZero for NonZeroU8 {
+    type U = u8;
+
+    fn new(val: Self::U) -> Option<Self> {
         Self::new(val)
     }
 
-    unsafe fn new_unchecked(val: u8) -> Self {
+    unsafe fn new_unchecked(val: Self::U) -> Self {
         Self::new_unchecked(val)
     }
 
-    fn get(self) -> u8 {
+    fn get(self) -> Self::U {
         self.get()
     }
 }
 
-impl NonZero<u16> for NonZeroU16 {
-    fn new(val: u16) -> Option<Self> {
+impl NonZero for NonZeroU16 {
+    type U = u16;
+
+    fn new(val: Self::U) -> Option<Self> {
         Self::new(val)
     }
 
-    unsafe fn new_unchecked(val: u16) -> Self {
+    unsafe fn new_unchecked(val: Self::U) -> Self {
         Self::new_unchecked(val)
     }
 
-    fn get(self) -> u16 {
+    fn get(self) -> Self::U {
         self.get()
     }
 }
 
-impl NonZero<u32> for NonZeroU32 {
-    fn new(val: u32) -> Option<Self> {
+impl NonZero for NonZeroU32 {
+    type U = u32;
+
+    fn new(val: Self::U) -> Option<Self> {
         Self::new(val)
     }
 
-    unsafe fn new_unchecked(val: u32) -> Self {
+    unsafe fn new_unchecked(val: Self::U) -> Self {
         Self::new_unchecked(val)
     }
 
-    fn get(self) -> u32 {
+    fn get(self) -> Self::U {
         self.get()
     }
 }
 
-impl NonZero<u64> for NonZeroU64 {
-    fn new(val: u64) -> Option<Self> {
+impl NonZero for NonZeroU64 {
+    type U = u64;
+
+    fn new(val: Self::U) -> Option<Self> {
         Self::new(val)
     }
 
-    unsafe fn new_unchecked(val: u64) -> Self {
+    unsafe fn new_unchecked(val: Self::U) -> Self {
         Self::new_unchecked(val)
     }
 
-    fn get(self) -> u64 {
+    fn get(self) -> Self::U {
         self.get()
     }
 }
 
-impl NonZero<usize> for NonZeroUsize {
-    fn new(val: usize) -> Option<Self> {
+impl NonZero for NonZeroUsize {
+    type U = usize;
+
+    fn new(val: Self::U) -> Option<Self> {
         Self::new(val)
     }
 
-    unsafe fn new_unchecked(val: usize) -> Self {
+    unsafe fn new_unchecked(val: Self::U) -> Self {
         Self::new_unchecked(val)
     }
 
-    fn get(self) -> usize {
+    fn get(self) -> Self::U {
         self.get()
     }
 }
