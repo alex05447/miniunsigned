@@ -4,7 +4,9 @@ use {
 };
 
 // Re-exporting for convenience.
-pub use num_traits::{FromPrimitive, PrimInt, ToPrimitive, WrappingAdd, WrappingMul, WrappingSub};
+pub use num_traits::{
+    Bounded, FromPrimitive, One, PrimInt, ToPrimitive, WrappingAdd, WrappingMul, WrappingSub,
+};
 
 /// An unsigned integer.
 /// `u8`, `u16`, `u32`, `u64`, `usize`.
